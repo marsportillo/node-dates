@@ -1,0 +1,25 @@
+{
+    "name": "dates",
+    "version": "0.1.0-dev",
+    "description": "A date formater with caching system for decoded format string",
+    "license": "MIT",
+
+    "author":{
+        "name": "Techniv",
+        "email": "vpeybernes.pro@gmail.com",
+        "url":"https://plus.google.com/117597625821202130678?rel=author"
+    },
+
+    "homepage": "http://github.com/Techniv/node-dates",
+    "repository":{
+        "type": "git",
+        "url": "http://github.com/Techniv/node-dates.git"
+    },
+    "bugs":{
+        "url":"http://github.com/Techniv/node-dates/issues"
+    },
+
+
+
+    "main": "libs/dates.js"
+}
