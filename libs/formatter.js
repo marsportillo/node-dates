@@ -3,10 +3,10 @@
  */
 
 var dictionaries = require('./dictionary');
-module.exports = DateFormater;
+module.exports = DateFormatter;
 
 
-function DateFormater(formatString){
+function DateFormatter(formatString){
      Object.defineProperties(this,{
          _formatString: {value:formatString},
          _formatProcess: {value:[]}
@@ -15,7 +15,7 @@ function DateFormater(formatString){
     compile.call(this);
 };
 
-DateFormater.prototype.format = function format(date){
+DateFormatter.prototype.format = function format(date){
     var result = "";
     for(var i in this._formatProcess){
         if(typeof this._formatProcess[i] == "function"){

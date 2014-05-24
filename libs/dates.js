@@ -2,7 +2,7 @@
  * Created by Vincent on 23/05/2014.
  */
 
-var Formater = require('./formater');
+var Formatter = require('./formatter');
 
 var formats = {};
 Object.defineProperties(formats, {
@@ -12,7 +12,8 @@ Object.defineProperties(formats, {
 
 module.exports = {
     standardFormat: formats,
-    format: format
+    format: format,
+    createFormatter: createFormatter
 }
 
 function format(formatString, date){
@@ -26,7 +27,11 @@ function format(formatString, date){
     if( ! (date instanceof Date) ) throw new Error("The second parameter of the function, if given," +
                                                    "must be a Date object or a date string");
 
-    return new Formater(formatString).format(date);
+    return new Formatter(formatString).format(date);
+}
+
+function createFormatter(formatString){
+    return new Formatter(formatString);
 }
 
 // UTILITY
