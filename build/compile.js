@@ -81,9 +81,10 @@ function afterCopy(){
 
     println("Moving final file:                   ");
     sto.on('finish', function(){
-        fs.unlinkSync(path.join(libPath, dicFile));
-        fs.renameSync(path.join(workPath,dicFile), path.join(libPath, dicFile));
         println("OK!\n");
+        println("\nCOMPILATION SUCCESS\n");
+        println("MOVE build/dictionary.js IN THE libs/ FOLDER\n");
+        println("--------------------------------------------\n\n");
     });
 
 }

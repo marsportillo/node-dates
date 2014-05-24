@@ -19,7 +19,7 @@ DateFormatter.prototype.format = function format(date){
     var result = "";
     for(var i in this._formatProcess){
         if(typeof this._formatProcess[i] == "function"){
-            result += this._formatProcess[i](date);
+            result += this._formatProcess[i].call(this, date);
         } else {
             result += this._formatProcess[i];
         }
@@ -28,6 +28,10 @@ DateFormatter.prototype.format = function format(date){
 };
 
 function compile(){
+    Object.defineProperty(this, '_i18n',{
+        value: require('./i18n/en')
+    });
+
     var str = this._formatString,
         format = this._formatProcess,
         node = dictionaries.tree,

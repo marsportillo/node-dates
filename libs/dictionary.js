@@ -6,8 +6,20 @@ module.exports.wordDef = {
     'dd': function(date){
         return formatNumber(date.getDate());
     }
+    , 'ddd': function(date){
+        return this._i18n.days3[date.getDay()];
+    }
+    , 'dddd': function(date){
+        return this._i18n.days[date.getDay()];
+    }
     , 'MM': function(date){
         return formatNumber(date.getMonth()+1);
+    }
+    , 'MMM': function(date){
+        return this._i18n.month3[date.getMonth()];
+    }
+    , 'MMMM': function(date){
+        return this._i18n.month[date.getMonth()];
     }
     , 'yy': function (date) {
         return date.getFullYear().toString().substr(-2);
@@ -23,6 +35,12 @@ module.exports.wordDef = {
     }
     , 'HH': function(date){
         return formatNumber(date.getHours());
+    }
+    , '$a': function(date){
+        return date.getHours() < 12 ? "am" : "pm";
+    }
+    , '$A': function(date){
+        return date.getHours() < 12 ? "AM" : "PM";
     }
     , 'mm': function(date){
         return formatNumber(date.getMinutes());
@@ -48,11 +66,12 @@ function formatNumber(num){
 //$$# DO NOT WRITE ANYTHING AFTER
 // COMPILED CODE START
 
-module.exports.tree = { d: { d: { end: true } },
-  M: { M: { end: true } },
+module.exports.tree = { d: { d: { end: true, d: { end: true, d: { end: true } } } },
+  M: { M: { end: true, M: { end: true, M: { end: true } } } },
   y: { y: { end: true, y: { y: { end: true } } } },
   h: { h: { end: true } },
   H: { H: { end: true } },
+  '$': { a: { end: true }, A: { end: true } },
   m: { m: { end: true } },
   s: { s: { end: true, s: { end: true } } } };
 
