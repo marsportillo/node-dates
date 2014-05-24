@@ -6,10 +6,13 @@ module.exports.wordDef = {
     'dd': function(date){
         return formatNumber(date.getDate());
     }
-    , 'ddd': function(date){
+    , 'ww': function(date){
+        return (date.getDay()+1).toString();
+    }
+    , 'www': function(date){
         return this._i18n.days3[date.getDay()];
     }
-    , 'dddd': function(date){
+    , 'wwww': function(date){
         return this._i18n.days[date.getDay()];
     }
     , 'MM': function(date){
@@ -66,7 +69,8 @@ function formatNumber(num){
 //$$# DO NOT WRITE ANYTHING AFTER
 // COMPILED CODE START
 
-module.exports.tree = { d: { d: { end: true, d: { end: true, d: { end: true } } } },
+module.exports.tree = { d: { d: { end: true } },
+  w: { w: { end: true, w: { end: true, w: { end: true } } } },
   M: { M: { end: true, M: { end: true, M: { end: true } } } },
   y: { y: { end: true, y: { y: { end: true } } } },
   h: { h: { end: true } },

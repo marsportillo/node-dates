@@ -1,6 +1,6 @@
 {
     "name": "dates",
-    "version": "0.1.0-dev",
+    "version": "0.2.0-dev",
     "description": "A date formater with caching system for decoded format string",
     "license": "MIT",
 
