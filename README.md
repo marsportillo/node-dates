@@ -5,7 +5,7 @@ This is date formatter with caching system for decoded format string for Node.JS
 ## Example
 ```javascript
 var dates = require('../libs/dates');
-var formatter = dates.createFormatter("The date is: ddd dd MMMM yyyy - hh:mm:ss.sss $a");
+var formatter = dates.createFormatter("The date is: www dd MMMM yyyy - hh:mm:ss.sss $a");
 console.log(formatter.format(new Date));
 ```
 
