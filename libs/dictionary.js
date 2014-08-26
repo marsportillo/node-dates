@@ -1,5 +1,5 @@
 /**
- * Created by Vincent on 23/05/2014.
+ * Created by Techniv on 23/05/2014.
  */
 
 module.exports.wordDef = {

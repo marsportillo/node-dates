@@ -1,5 +1,5 @@
 /**
- * Created by Vincent on 24/05/2014.
+ * Created by Techniv on 24/05/2014.
  */
 
 module.exports = {
@@ -9,4 +9,4 @@ module.exports = {
         "July", "August", "September", "October", "November", "December"],
     month3: ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-}
+};

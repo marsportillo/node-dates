@@ -1,13 +1,13 @@
 /**
- * Created by Vincent on 23/05/2014.
+ * Created by Techniv on 23/05/2014.
  */
 
 var Formatter = require('./formatter');
 
 var formats = {};
 Object.defineProperties(formats, {
-    ISO8601: {value: "yyyy-MM-dd hh:mm:ss.sss"},
-    DATETIME: {value: "DATETIME"}
+    ISO8601: {value: "yyyy-MM-ddThh:mm:ss.sssZ"},
+    DATETIME: {value: "yyyy-MM-dd hh:mm:ss"}
 });
 
 module.exports = {
@@ -16,7 +16,7 @@ module.exports = {
     createFormatter: createFormatter
 }
 
-function format(formatString, date){
+function format(formatString, date, local){
     if(typeof date == "string" && Date.parse(date) != NaN){ date = new Date(date); }
 
     if(typeof date == "undefined"){
@@ -27,11 +27,11 @@ function format(formatString, date){
     if( ! (date instanceof Date) ) throw new Error("The second parameter of the function, if given," +
                                                    "must be a Date object or a date string");
 
-    return new Formatter(formatString).format(date);
+    return new Formatter(formatString, local).format(date);
 }
 
-function createFormatter(formatString){
-    return new Formatter(formatString);
+function createFormatter(formatString, local){
+    return new Formatter(formatString, local);
 }
 
 // UTILITY

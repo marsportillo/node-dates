@@ -4,10 +4,25 @@ This is date formatter with caching system for decoded format string for Node.JS
 
 ## Example
 ```javascript
-var dates = require('../libs/dates');
+var dates = require('dates');
+
+// Format a date without cache using a standard format.
+console.log(dates.format(dates.standardFormat.ISO8601), new Date());
+
+// Format a date with cache and custom format.
 var formatter = dates.createFormatter("The date is: ddd dd MMMM yyyy - hh:mm:ss.sss $a");
 console.log(formatter.format(new Date));
+
+// Format a date with a different local (here french).
+formatter = dates.createFormatter("La date est : www dd MMMM yyyy - HH:mm:ss.sss", 'fr');
+console.log(formatter.format(new Date));
 ```
+
+# API
+* **format( *{string} formatString* [, *{Date} date* ] [, *{string} local* ]) -> {string}** - format a date.
+* **createFormatter( *{string} formatString* [, *{string} local* ]) -> {DateFormatter}** - return a date formatter.
+* -
+* **DateFormatter::format( *{Date} date* ) -> {string}** - format a date.
 
 ## Patterns
 * ***dd***: The day in the month with 0 before if necessary.
@@ -28,6 +43,10 @@ console.log(formatter.format(new Date));
 * ***ss***: The seconds.
 * ***sss***: The milliseconds.
 
+## The standard formats
+* **ISO8601**:	"yyyy-MM-ddThh:mm:ss.sssZ"
+* **DATETIME**:	"yyyy-MM-dd hh:mm:ss"
+
 ## How work the cache
 When you create a formatter the format string is read to extract the format process and compile it in an array.
 
@@ -44,5 +63,5 @@ functions**.
 Your original format string is never read again as long you keep the same formatter object.
 
 ## Internationalization
-The i18n system is not full implemented yet.
-You can translate yourself the */libs/i18n/en.js* to change the language.
+You can change the local of the name of the days and mouths with the *local* parameter. The available locals are stored
+at *./libs/i18n/*.

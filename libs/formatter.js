@@ -1,18 +1,23 @@
 /**
- * Created by Vincent on 24/05/2014.
+ * Created by Techniv on 24/05/2014.
  */
+
+var path = require('path');
+var fs = require('fs');
 
 var dictionaries = require('./dictionary');
 module.exports = DateFormatter;
 
 
-function DateFormatter(formatString){
-     Object.defineProperties(this,{
-         _formatString: {value:formatString},
-         _formatProcess: {value:[]}
-     });
+function DateFormatter(formatString, local){
+    Object.defineProperties(this,{
+        _formatString: {value:formatString},
+        _formatProcess: {value:[]}
+    });
+
 
     compile.call(this);
+    loadLocal.call(this, local);
 };
 
 DateFormatter.prototype.format = function format(date){
@@ -28,9 +33,6 @@ DateFormatter.prototype.format = function format(date){
 };
 
 function compile(){
-    Object.defineProperty(this, '_i18n',{
-        value: require('./i18n/en')
-    });
 
     var str = this._formatString,
         format = this._formatProcess,
@@ -58,4 +60,16 @@ function compile(){
         buff += str[i];
     }
     format.push(buff);
+}
+
+function loadLocal(local){
+    var localPath = path.join(__dirname,'i18n',local+'.js');
+
+    if(fs.existsSync(localPath)){
+        Object.defineProperty(this, '_i18n',{
+            value: require(localPath)
+        });
+    } else {
+        loadLocal.call(this, 'en');
+    }
 }

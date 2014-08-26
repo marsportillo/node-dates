@@ -1,5 +1,5 @@
 /**
- * Created by Vincent on 24/05/2014.
+ * Created by Techniv on 24/05/2014.
  */
 
 var fs          = require('fs'),
