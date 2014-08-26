@@ -2,7 +2,7 @@
 
 This is date formatter with caching system for decoded format string for Node.JS
 
-## Example
+## Examples
 ```javascript
 var dates = require('dates');
 
